@@ -1,10 +1,27 @@
 
 
-## Installation
+## Instalacao:
+
+## Instale o gerenciador de pacotes NPM
 
 ```bash
 $ npm install
 ```
+
+## Instalando as dependencias de microserviços
+
+```
+npm install @nestjs/microservices
+```
+
+## Para permitir a comunicação com RabitMQ
+
+```
+npm install amqplib amqplib-connection-manager
+
+```
+
+
 
 ## Running the app
 
