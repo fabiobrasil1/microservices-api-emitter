@@ -17,13 +17,26 @@ npm install @nestjs/microservices
 ## Para permitir a comunicação com RabitMQ
 
 ```
-npm install amqplib amqplib-connection-manager
+npm install amqplib amqp-connection-manager
+
+```
+
+## Para lidar com datas
+
+```
+npm install moment-timezone
+
+```
+
+##  Validacao de dados recebidos
+
+```
+npm install class-validator class-transformer
 
 ```
 
 
-
-## Running the app
+## Rodando o app
 
 ```bash
 # development
@@ -36,7 +49,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Teste
 
 ```bash
 # unit tests
@@ -48,17 +61,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
