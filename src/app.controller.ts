@@ -16,7 +16,7 @@ export class AppController {
       transport: Transport.RMQ,
       options: {
         // urls: ['amqp://<usuarioRabitMQ>:<passwordRabitMQ>@<ip_InstanciaRBTMQ_AWS>:<portaConexaoAplicaco>/<virtualhostname>']
-        urls: ['amqp://<usuarioRabitMQ>:<passwordRabitMQ>18.210.17.173:5672/srmartranking'],
+        urls: ['amqp://admin:admin@18.210.17.173:5672/srmartranking'],
         queue: 'admin-backend'
       },
     })
@@ -34,6 +34,4 @@ export class AppController {
 
     return this.clientAdminBackend.send('consultar-categorias', _id ? _id: '')
   }
-
-
 } 
