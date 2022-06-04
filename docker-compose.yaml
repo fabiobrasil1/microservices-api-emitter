@@ -1,0 +1,12 @@
+services:
+  rabbitmiq: 
+    image: rabbitmq:3-management
+    ports: 
+    - 15672:15672
+    - 5672:5672
+    - 25676:25676
+    environment: 
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+
