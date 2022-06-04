@@ -15,7 +15,6 @@ export class AppController {
     this.clientAdminBackend = ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {
-        // urls: ['amqp://<usuarioRabitMQ>:<passwordRabitMQ>@<ip_InstanciaRBTMQ_AWS>:<portaConexaoAplicaco>/<virtualhostname>']
         urls: ['amqp://admim:admim@localhost:5672/srmartranking'],
         queue: 'admin-backend'
       },
