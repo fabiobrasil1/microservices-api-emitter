@@ -16,7 +16,7 @@ export class AppController {
       transport: Transport.RMQ,
       options: {
         // urls: ['amqp://<usuarioRabitMQ>:<passwordRabitMQ>@<ip_InstanciaRBTMQ_AWS>:<portaConexaoAplicaco>/<virtualhostname>']
-        urls: ['amqp://admin:admin@18.210.17.173:5672/srmartranking'],
+        urls: ['amqp://admim:admim@localhost:5672/srmartranking'],
         queue: 'admin-backend'
       },
     })
