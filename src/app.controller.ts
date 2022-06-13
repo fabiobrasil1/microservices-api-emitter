@@ -35,10 +35,10 @@ export class AppController {
   }
 
   @Get('categoria/teste')
-  consultarCategorias(@Payload() data: any):Observable<any> {
+  consultarCategorias(@Body() data: any): Observable<any> {
     let message = this.clientAdminBackend.send('consultar-categorias', data);
 
-    // JSON.stringify(message)
+    // message = JSON.stringify(message)
     console.log(message)
     return message
   }
