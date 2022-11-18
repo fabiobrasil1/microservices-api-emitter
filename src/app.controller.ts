@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Logger, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ClientProxy, ClientProxyFactory, Payload, Transport } from '@nestjs/microservices'
-import { Observable, timeout } from 'rxjs';
+import { firstValueFrom, Observable, timeout } from 'rxjs';
 import { CriarCategoriaDto } from './dtos/criar-categoria.dto';
 
 
@@ -9,37 +9,36 @@ export class AppController {
 
   private logger = new Logger(AppController.name);
 
-  private clientAdminBackend: ClientProxy
+  private client: ClientProxy
 
   constructor() {
-    this.clientAdminBackend = ClientProxyFactory.create({
+    this.client = ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {
         urls: ['amqp://admin:admin@localhost:5672'],
-        queue: 'admin-backend',
-        // noAck: true,
+        noAck: false,
+        queue: 'credenciados-mapa',
         queueOptions: {
-          durable: true
+          durable: true,
         },
       },
-    })
+    });
   }
 
-  @Post('criacategoria')
-  @UsePipes(ValidationPipe)
-  async criarCategoria(
-    // @Body() criarCategoriaDto: CriarCategoriaDto) {
-    @Body() criarCategoriaDto: any) {
-      console.log(criarCategoriaDto)
-    return await this.clientAdminBackend.emit('criar-categoria', criarCategoriaDto)
-  }
+  // @Post('criacategoria')
+  // @UsePipes(ValidationPipe)
+  // async criarCategoria(
+  //   // @Body() criarCategoriaDto: CriarCategoriaDto) {
+  //   @Body() criarCategoriaDto: any) {
+  //   console.log(criarCategoriaDto)
+  //   return await this.clientAdminBackend.emit('criar-categoria', criarCategoriaDto)
+  // }
 
-  @Get('categoria/teste')
-  consultarCategorias(@Body() data: any): Observable<any> {
-    let message = this.clientAdminBackend.send('consultar-categorias', data);
-
-    // message = JSON.stringify(message)
-    console.log(message)
-    return message
+  @Post('teste')
+  async teste(@Body() data: any): Promise<any> {
+    let message = await firstValueFrom(this.client.send('viewingArea', data));
+    message = JSON.stringify(message.data.response);
+    console.log(message);
+    return message;
   }
-} 
+}
